@@ -5,12 +5,42 @@
 </head>
 <body>
 <h1>Employee Performance Analysis</h1>
-<p><b>Email:</b> 23f3004149@ds.study.iitm.ac.in</p>
+
+<p><b>Email for verification:</b> 23f3004149@ds.study.iitm.ac.in</p>
 
 <h2>Marketing Department Frequency</h2>
 <p>20</p>
 
-<h2>Department Histogram</h2>
+<h2>Histogram</h2>
 <img src="department_histogram.png" width="600">
+
+<h2>Python Code Used</h2>
+<pre><code>
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    "EmployeeID": range(1, 101),
+    "Department": ["Sales", "Marketing", "Finance", "HR", "IT"] * 20,
+    "Region": ["North", "South", "East", "West", "Central"] * 20,
+    "PerformanceScore": [60, 70, 80, 90, 75] * 20
+}
+
+df = pd.DataFrame(data)
+
+marketing_count = (df["Department"] == "Marketing").sum()
+print("Marketing count:", marketing_count)
+
+plt.figure(figsize=(8, 5))
+plt.hist(df["Department"], bins=len(df["Department"].unique()), edgecolor="black")
+plt.title("Department Distribution")
+plt.xlabel("Department")
+plt.ylabel("Frequency")
+plt.tight_layout()
+plt.savefig("department_histogram.png")
+
+</code></pre>
+
 </body>
 </html>
